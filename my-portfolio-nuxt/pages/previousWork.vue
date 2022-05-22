@@ -26,13 +26,14 @@ export default {
                     image: {
                         url: ethereumImg
                         },
-                        title: 'ETHEREUM CARBON CALCULATOR'
+                        title: 'ETHEREUM CARBON CALCULATOR',
                 },
                 {
-                    image: {
+                    image:
+                    {
                         url: diceImg
                         },
-                        title: 'Blackjack'
+                        title: 'Blackjack',
                 }
             ]
         }
