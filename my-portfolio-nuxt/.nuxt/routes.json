@@ -1,0 +1,30 @@
+[
+  {
+    "name": "about",
+    "path": "/about",
+    "component": "E:\\\\Personal Files\\\\Personal Projects\\\\nuxtjs\\\\my-portfolio-nuxt\\\\pages\\\\about.vue",
+    "chunkName": "pages/about",
+    "_name": "_57066d46"
+  },
+  {
+    "name": "careers",
+    "path": "/careers",
+    "component": "E:\\\\Personal Files\\\\Personal Projects\\\\nuxtjs\\\\my-portfolio-nuxt\\\\pages\\\\careers.vue",
+    "chunkName": "pages/careers",
+    "_name": "_7d9c7a2e"
+  },
+  {
+    "name": "previousWork",
+    "path": "/previousWork",
+    "component": "E:\\\\Personal Files\\\\Personal Projects\\\\nuxtjs\\\\my-portfolio-nuxt\\\\pages\\\\previousWork.vue",
+    "chunkName": "pages/previousWork",
+    "_name": "_75a6347f"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "E:\\\\Personal Files\\\\Personal Projects\\\\nuxtjs\\\\my-portfolio-nuxt\\\\pages\\\\index.vue",
+    "chunkName": "pages/index",
+    "_name": "_76be480b"
+  }
+]
