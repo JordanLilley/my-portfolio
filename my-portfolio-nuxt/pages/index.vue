@@ -12,13 +12,31 @@
         <p id="frontPagePara" class="font-exo text-4xl opacity-0" style="transform: translateY(30px);">
           Aspiring Software Engineer 
         </p>
-        <a
-          id="frontPageButton"
-          href="https://chriscourses.com/"
-          class="border px-4 py-2 rounded-lg text-sm font-space-mono uppercase mt-8 hover:bg-white hover:text-gray-800 inline-block opacity-0" style="transform: translateY(30px);"
-        >
-          Find Out About Him Here
-        </a>
+      <div style="display: flex; justify-content: center;">
+        <div class="center space-x-4">
+          <a
+            id="previousWorkButton"
+            href=""
+            class="border px-4 py-2 rounded-lg text-sm font-space-mono uppercase mt-8 hover:bg-white hover:text-gray-800 inline-block opacity-0" style="transform: translateY(30px);"
+          >
+            PREVIOUS WORK
+          </a>
+          <a
+            id="aboutButton"
+            href=""
+            class="border px-4 py-2 rounded-lg text-sm font-space-mono uppercase mt-8 hover:bg-white hover:text-gray-800 inline-block opacity-0" style="transform: translateY(30px);"
+          >
+            ABOUT JORDAN
+          </a>
+          <a
+            id="careerButton"
+            href=""
+            class="border px-4 py-2 rounded-lg text-sm font-space-mono uppercase mt-8 hover:bg-white hover:text-gray-800 inline-block opacity-0" style="transform: translateY(30px);"
+          >
+            CAREER INTERESTS
+          </a>
+        </div>
+      </div>
       </div>
       </div>
 </template>
@@ -33,7 +51,8 @@ export default {
   mounted() {
 const dat = require('dat.gui')
 
-const gui = new dat.GUI()
+/* GUI Start */
+// const gui = new dat.GUI()
 const world = {
   plane: {
     width: 400,
@@ -42,11 +61,13 @@ const world = {
     heightSegments: 50
   }
 }
-gui.add(world.plane, 'width', 1, 500).onChange(generatePlane)
+// gui.add(world.plane, 'width', 1, 500).onChange(generatePlane)
 
-gui.add(world.plane, 'height', 1, 500).onChange(generatePlane)
-gui.add(world.plane, 'widthSegments', 1, 100).onChange(generatePlane)
-gui.add(world.plane, 'heightSegments', 1, 100).onChange(generatePlane)
+// gui.add(world.plane, 'height', 1, 500).onChange(generatePlane)
+// gui.add(world.plane, 'widthSegments', 1, 100).onChange(generatePlane)
+// gui.add(world.plane, 'heightSegments', 1, 100).onChange(generatePlane)
+/* GUI End */
+
 
 function generatePlane() {
   planeMesh.geometry.dispose()
@@ -266,7 +287,7 @@ gsap.to('#frontPagePara', {
   ease: 'expo'
 })
 
-gsap.to('#frontPageButton', {
+gsap.to('#previousWorkButton', {
   opacity: 1,
   duration: 1.5,
   delay: 0.6,
@@ -274,7 +295,24 @@ gsap.to('#frontPageButton', {
   ease: 'expo'
 })
 
-document.querySelector('#frontPageButton').addEventListener('click', (e) => {
+gsap.to('#aboutButton', {
+  opacity: 1,
+  duration: 1.5,
+  delay: 0.6,
+  y:0,
+  ease: 'expo'
+})
+
+gsap.to('#careerButton', {
+  opacity: 1,
+  duration: 1.5,
+  delay: 0.6,
+  y:0,
+  ease: 'expo'
+})
+
+// Transition to Previous Work
+document.querySelector('#previousWorkButton').addEventListener('click', (e) => {
   e.preventDefault()
   gsap.to('#frontPageDivContainer', {
     opacity: 0
@@ -300,6 +338,59 @@ document.querySelector('#frontPageButton').addEventListener('click', (e) => {
   })
 })
 
+// Transition to About Jordan
+document.querySelector('#aboutButton').addEventListener('click', (e) => {
+  e.preventDefault()
+  gsap.to('#frontPageDivContainer', {
+    opacity: 0
+  })
+  gsap.to(camera.position, {
+    ease: 'power3.inOut',
+    duration: 2,
+    z: 25
+  })
+  gsap.to(camera.rotation, {
+    ease: 'power3.inOut',
+    duration: 2,
+    x: 1.57
+  })
+  gsap.to(camera.position, {
+    ease: 'power3.in',
+    duration: 1.5,
+    y: 1000,
+    delay: 2,
+    onComplete: () => {
+      this.$router.push("/about")
+    }
+  })
+})
+
+// Transition to Career Interests
+document.querySelector('#careerButton').addEventListener('click', (e) => {
+  e.preventDefault()
+  gsap.to('#frontPageDivContainer', {
+    opacity: 0
+  })
+  gsap.to(camera.position, {
+    ease: 'power3.inOut',
+    duration: 2,
+    z: 25
+  })
+  gsap.to(camera.rotation, {
+    ease: 'power3.inOut',
+    duration: 2,
+    x: 1.57
+  })
+  gsap.to(camera.position, {
+    ease: 'power3.in',
+    duration: 1.5,
+    y: 1000,
+    delay: 2,
+    onComplete: () => {
+      this.$router.push("/careers")
+    }
+  })
+})
 // Make sure all devices have a good aspect ratio.
 addEventListener('resize', () => {
   camera.aspect = innerWidth / innerHeight
