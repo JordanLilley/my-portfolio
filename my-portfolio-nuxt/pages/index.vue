@@ -1,4 +1,6 @@
 <template>
+<div>
+<canvas ref="homeCanvas"></canvas>
   <div
         id="frontPageDivContainer"
         class="absolute text-white text-center max-w-2xl px-6"
@@ -17,6 +19,7 @@
         >
           Find Out About Him Here
         </a>
+      </div>
       </div>
 </template>
 
@@ -94,11 +97,12 @@ const camera = new PerspectiveCamera(
   0.1,
   1000
 )
-const renderer = new WebGLRenderer()
+const renderer = new WebGLRenderer({
+  canvas: this.$refs.homeCanvas
+})
 
 renderer.setSize(innerWidth, innerHeight)
 renderer.setPixelRatio(devicePixelRatio)
-document.body.appendChild(renderer.domElement)
 
 new OrbitControls(camera, renderer.domElement)
 camera.position.z = 50
@@ -291,6 +295,7 @@ document.querySelector('#frontPageButton').addEventListener('click', (e) => {
     y: 1000,
     delay: 2,
     onComplete: () => {
+      this.$router.push("/previousWork")
     }
   })
 })
