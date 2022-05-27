@@ -71,6 +71,7 @@ import {
   Float32BufferAttribute,
   Points,
 } from "three";
+
 import OrbitControls from "orbit-controls-es6";
 
 export default {
@@ -153,18 +154,19 @@ export default {
     new OrbitControls(camera, renderer.domElement);
     camera.position.z = 50;
 
-    const planeGeometry = new PlaneGeometry(
-      world.plane.width,
-      world.plane.height,
-      world.plane.widthSegments,
-      world.plane.heightSegments
+    const planeMesh = new Mesh(
+      new PlaneGeometry(
+        world.plane.width,
+        world.plane.height,
+        world.plane.widthSegments,
+        world.plane.heightSegments
+      ),
+      new MeshPhongMaterial({
+        side: DoubleSide,
+        flatShading: FlatShading,
+        vertexColors: true,
+      })
     );
-    const planeMaterial = new MeshPhongMaterial({
-      side: DoubleSide,
-      flatShading: FlatShading,
-      vertexColors: true,
-    });
-    const planeMesh = new Mesh(planeGeometry, planeMaterial);
     scene.add(planeMesh);
     generatePlane();
 
@@ -188,8 +190,6 @@ export default {
       const z = (Math.random() - 0.5) * 2000;
       starVerticies.push(x, y, z);
     }
-
-    console.log(starVerticies);
 
     starGeometry.setAttribute(
       "position",
