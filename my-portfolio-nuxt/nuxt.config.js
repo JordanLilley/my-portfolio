@@ -11,11 +11,17 @@ export default {
       { hid: "description", name: "description", content: "" },
       { name: "format-detection", content: "telephone=no" },
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    link: [
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,600&family=Play:wght@400;700&family=Space+Mono:wght@400;700&display=swap"}
+    ],
+
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: [
+    '~/assets/css/main.css'
+  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -27,13 +33,10 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     [
+      '@nuxt/postcss8',
       "@nuxtjs/google-fonts",
       {
         families: {
-          "Exo+2": {
-            ital: [700],
-          },
-          "Space+Mono": true,
         },
       },
     ],
@@ -44,5 +47,12 @@ export default {
   modules: [],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    postcss: {
+      plugins: {
+        tailwindcss: {},
+        autoprefixer: {},
+      },
+    },
+  },
 };
