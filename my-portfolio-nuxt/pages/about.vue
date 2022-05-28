@@ -1,66 +1,75 @@
 <template>
   <body>
-    <div class="flex h-screen">
+    <div class="xl:flex h-screen">
       <div
         id="infoDiv"
-        class="w-1/2 flex flex-col justify-center px-8 bg-black"
+        class="xl:w-1/2 flex flex-col justify-center px-8 bg-black pt-16 xl:pt-0"
       >
-        <h1 class="text-white text-3xl mb-4 font-exo">GENERIC INFORMATION:</h1>
-        <div class="text-gray-400 mb-8 font-play text-2xl">
-          <p>My name is Jordan Lilley.</p>
-          <p>I am 21 years old and am based in the UK, Dorset.</p>
-        </div>
+        <div style="max-width: 500px" class="mx-auto">
+          <h1 class="text-white l:text-3xl mb-4 font-exo">
+            GENERIC INFORMATION:
+          </h1>
+          <div class="text-gray-400 mb-8 font-play l:text-2xl">
+            <p>My name is Jordan Lilley.</p>
+            <p>I am 21 years old and am based in the UK, Dorset.</p>
+          </div>
 
-        <h1 class="text-white text-3xl mb-4 font-exo">EDUCATION:</h1>
-        <div class="text-gray-400 mb-8 font-play text-2xl">
-          <p>I studied Computer Science in High School all the way up to the end Sixth Form.</p>
-          <p>I then studied Software Engineering at Bournemouth University for three years.</p>
-        </div>
+          <h1 class="text-white l:text-3xl mb-4 font-exo">EDUCATION:</h1>
+          <div class="text-gray-400 mb-8 font-play l:text-2xl">
+            <p>
+              I studied Computer Science in High School all the way up to the
+              end Sixth Form.
+            </p>
+            <p>
+              I then studied Software Engineering at Bournemouth University for
+              three years.
+            </p>
+          </div>
 
-        <h1 class="text-white text-3xl mb-4 font-exo">
-          PROGRAMMING LANGUAGES:
-        </h1>
-        <div class="text-gray-400 mb-8 font-play text-2xl">
+          <h1 class="text-white l:text-3xl mb-4 font-exo">
+            PROGRAMMING LANGUAGES:
+          </h1>
+          <div class="text-gray-400 mb-8 font-play l:text-2xl">
+            <p>Cascading Style Sheets</p>
+            <p>C#</p>
+            <p>HyperText Markup Language</p>
+            <p>Java</p>
+            <p>Javascript</p>
+            <p>Python</p>
+            <p>SQL and NoSQL</p>
+            <p>Visual Basic</p>
+          </div>
 
-          <p>Cascading Style Sheets</p>
-          <p>C#</p>
-          <p>HyperText Markup Language</p>
-          <p>Java</p>
-          <p>Javascript </p>
-          <p>Python</p>
-          <p>SQL and NoSQL</p>
-          <p>Visual Basic</p>
-        </div>
+          <h1 class="text-white l:text-3xl mb-4 font-exo">
+            FRAMEWORKS AND RUNTIME ENVIRONMENTS:
+          </h1>
+          <div class="text-gray-400 mb-8 font-play l:text-2xl">
+            <p>Node.js</p>
+            <p>Nuxt.js</p>
+            <p>React</p>
+          </div>
 
-        <h1 class="text-white text-3xl mb-4 font-exo">
-          FRAMEWORKS AND RUNTIME ENVIRONMENTS:
-        </h1>
-        <div class="text-gray-400 mb-8 font-play text-2xl">
-          <p>Node.js</p>
-          <p>Nuxt.js</p>
-          <p>React </p>
-        </div>
+          <h1 class="text-white l:text-3xl mb-4 font-exo">IDE PREFERENCE:</h1>
+          <div class="text-gray-400 mb-8 font-play l:text-2xl">
+            <p>Visual Studio Code</p>
+          </div>
 
-        <h1 class="text-white text-3xl mb-4 font-exo">IDE PREFERENCE:</h1>
-        <div class="text-gray-400 mb-8 font-play text-2xl">
-          <p>Visual Studio Code</p>
-        </div>
+          <h1 class="text-white l:text-3xl mb-4 font-exo">WORK EXPERIENCE:</h1>
+          <div class="text-gray-400 mb-8 font-play l:text-2xl">
+            <p>3 Years in Retail</p>
+          </div>
 
-        <h1 class="text-white text-3xl mb-4 font-exo">WORK EXPERIENCE:</h1>
-        <div class="text-gray-400 mb-8 font-play text-2xl">
-          <p>3 Years in Retail</p>
-        </div>
-
-        <div>
-          <a
-            href="/"
-            class="flex text-white bg-green-600 inline-block px-8 py-4 rounded-full font-play justify-center"
-          >
-            <b>GO HOME</b>
-          </a>
+          <div>
+            <a
+              href="/"
+              class="xl:flex text-white bg-green-600 inline-block px-8 py-4 rounded-full font-play justify-center"
+            >
+              <b>GO HOME</b>
+            </a>
+          </div>
         </div>
       </div>
-      <div id="globeDiv" class="w-1/2">
+      <div id="globeDiv" class="h-screen xl:w-1/2">
         <canvas></canvas>
       </div>
     </div>
@@ -92,7 +101,7 @@ export default {
     const globeDiv = document.querySelector("#globeDiv");
     const scene = new Scene();
 
-    const camera = new PerspectiveCamera(
+    let camera = new PerspectiveCamera(
       75,
       globeDiv.offsetWidth / globeDiv.offsetHeight,
       0.1,
@@ -175,6 +184,17 @@ export default {
     addEventListener("mousemove", (event) => {
       mouse.x = (event.clientX / innerWidth) * 2 - 1;
       mouse.y = (event.clientY / innerHeight) * 2 + 1;
+    });
+
+    addEventListener("resize", () => {
+      renderer.setSize(globeDiv.offsetWidth, globeDiv.offsetHeight);
+      camera = new PerspectiveCamera(
+        75,
+        globeDiv.offsetWidth / globeDiv.offsetHeight,
+        0.1,
+        1000
+      );
+      camera.position.z = 15;
     });
   },
 };
