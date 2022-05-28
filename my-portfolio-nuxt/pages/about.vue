@@ -62,7 +62,8 @@
           <div>
             <a
               href="/"
-              class="xl:flex text-white bg-green-600 inline-block px-8 py-4 rounded-full font-play justify-center"
+              class="text-white border px-4 py-2 rounded-lg text-sm font-space-mono uppercase mt-8 hover:bg-white hover:text-gray-800 inline-block"
+              id="homeButton"
             >
               <b>GO HOME</b>
             </a>
@@ -95,6 +96,7 @@ import {
   Color,
 } from "three";
 import earthUV from "~/assets/earthUV.jpg";
+import venusUV from "~/assets/venusUV.jpg";
 
 export default {
   mounted() {
@@ -186,6 +188,24 @@ export default {
       mouse.y = (event.clientY / innerHeight) * 2 + 1;
     });
 
+    addEventListener("mouseup", (event) => {
+      mouse.down = false;
+    });
+
+    addEventListener("touchmove", (event) => {
+      event.clientX = event.touches[0].clientX;
+      event.clientY = event.touches[0].clientY;
+      const doesIntersect = raycaster.intersectObject(sphere);
+      console.log(doesIntersect);
+
+      mouse.x = (event.clientX / innerWidth) * 2 - 1;
+      mouse.y = (event.clientY / innerHeight) * 2 + 1;
+    });
+
+    addEventListener("touchend", (event) => {
+      mouse.down = false;
+    });
+
     addEventListener("resize", () => {
       renderer.setSize(globeDiv.offsetWidth, globeDiv.offsetHeight);
       camera = new PerspectiveCamera(
@@ -195,6 +215,42 @@ export default {
         1000
       );
       camera.position.z = 15;
+    });
+
+    // Transition back to Home Page
+    document.querySelector("#homeButton").addEventListener("click", (e) => {
+      e.preventDefault();
+      scroll({
+        top: 1250,
+        left: 100,
+        behavior: "smooth",
+      });
+      gsap.to(camera.position, {
+        ease: "power3.inOut",
+        duration: 2,
+        z: 25,
+      });
+      gsap.to(camera.rotation, {
+        ease: "power3.inOut",
+        duration: 2,
+        x: 1.57,
+      });
+      gsap.to(camera.position, {
+        ease: "power3.inOut",
+        duration: 2,
+        y: -200,
+        onComplete: () => {
+          gsap.to(camera.position, {
+            ease: "power3.in",
+            duration: 1.5,
+            y: 1000,
+            delay: 0.01,
+            onComplete: () => {
+              this.$router.push("/");
+            },
+          });
+        },
+      });
     });
   },
 };
