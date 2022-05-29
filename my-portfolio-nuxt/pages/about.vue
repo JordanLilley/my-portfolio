@@ -188,7 +188,7 @@ export default {
       opacity: 1,
       duration: 1.5,
       x: 0,
-      ease: "expo",
+      ease: "bounce.out",
     });
 
     addEventListener("mousemove", (event) => {

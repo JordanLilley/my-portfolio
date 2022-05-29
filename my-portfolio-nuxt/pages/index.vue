@@ -46,6 +46,14 @@
           >
             CAREER INTERESTS
           </a>
+          <a
+            id="contactButton"
+            href=""
+            class="border px-4 py-2 rounded-lg text-sm font-space-mono uppercase mt-8 hover:bg-white hover:text-gray-800 inline-block opacity-0"
+            style="transform: translateY(30px)"
+          >
+            CONTACT
+          </a>
         </div>
       </div>
     </div>
@@ -335,6 +343,14 @@ export default {
       ease: "expo",
     });
 
+    gsap.to("#contactButton", {
+      opacity: 1,
+      duration: 1.5,
+      delay: 0.6,
+      y: 0,
+      ease: "expo",
+    });
+
     // Transition to Previous Work
     document
       .querySelector("#previousWorkButton")
@@ -433,6 +449,41 @@ export default {
             delay: 0.01,
             onComplete: () => {
               this.$router.push("/careers");
+            },
+          });
+        },
+      });
+    });
+
+    
+    // Transition to Contact
+    document.querySelector("#contactButton").addEventListener("click", (e) => {
+      e.preventDefault();
+      gsap.to("#frontPageDivContainer", {
+        opacity: 0,
+      });
+      gsap.to(camera.position, {
+        ease: "power3.inOut",
+        duration: 2,
+        z: 25,
+      });
+      gsap.to(camera.rotation, {
+        ease: "power3.inOut",
+        duration: 2,
+        x: 1.57,
+      });
+      gsap.to(camera.position, {
+        ease: "power3.inOut",
+        duration: 2,
+        y: -200,
+        onComplete: () => {
+          gsap.to(camera.position, {
+            ease: "power3.in",
+            duration: 1.5,
+            y: 1000,
+            delay: 0.01,
+            onComplete: () => {
+              this.$router.push("/contact");
             },
           });
         },
