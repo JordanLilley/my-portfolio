@@ -5,13 +5,13 @@
         id="infoDiv"
         class="xl:w-1/2 flex flex-col justify-center px-8 bg-black pt-16 xl:pt-0"
       >
-        <div style="max-width: 500px" class="mx-auto">
+        <div id="infoDivData" style="transform: translateX(-100px); max-width: 500px" class="mx-auto">
           <h1 class="text-white l:text-3xl mb-4 font-exo">DEGREE STUDIED :</h1>
           <div class="text-gray-400 mb-8 font-play l:text-2xl">
             <p>Software Engineering BSc (Hons)</p>
           </div>
 
-          <h1 class="text-white l:text-3xl mb-4 font-exo">Desired Roles:</h1>
+          <h1 class="text-white l:text-3xl mb-4 font-exo">DESIRED ROLES:</h1>
           <div class="text-gray-400 mb-8 font-play l:text-2xl">
             <p>Front-End Developer</p>
             <p>Back-End Developer</p>
@@ -151,6 +151,14 @@ export default {
       });
     }
     animate();
+
+    // Animate all divs in.
+    gsap.to("#infoDivData", {
+      opacity: 1,
+      duration: 1.5,
+      x: 0,
+      ease: "expo",
+    });
 
     addEventListener("mousemove", (event) => {
       mouse.x = (event.clientX / innerWidth) * 2 - 1;

@@ -5,58 +5,21 @@
         id="infoDiv"
         class="xl:w-1/2 flex flex-col justify-center px-8 bg-black pt-16 xl:pt-0"
       >
-        <div id="infoDivData" class="mx-auto" style="transform: translateX(-100px); max-width: 500px">
-          <h1 class="text-white l:text-3xl mb-4 font-exo">
-            GENERIC INFORMATION:
-          </h1>
+        <div
+          id="infoDivData"
+          style="transform: translateX(-100px); max-width: 500px"
+          class="mx-auto"
+        >
+          <h1 class="text-white l:text-3xl mb-4 font-exo">CONTACT EMAIL:</h1>
           <div class="text-gray-400 mb-8 font-play l:text-2xl">
-            <p>My name is Jordan Lilley.</p>
-            <p>I am 21 years old and am based in the UK, Dorset.</p>
+            <p>jordan.lilley@icloud.com</p>
           </div>
 
-          <h1 class="text-white l:text-3xl mb-4 font-exo">EDUCATION:</h1>
+          <h1 class="text-white l:text-3xl mb-4 font-exo">LINKEDIN:</h1>
           <div class="text-gray-400 mb-8 font-play l:text-2xl">
-            <p>
-              I studied Computer Science in High School all the way up to the
-              end Sixth Form.
-            </p>
-            <p>
-              I then studied Software Engineering at Bournemouth University for
-              three years.
-            </p>
-          </div>
-
-          <h1 class="text-white l:text-3xl mb-4 font-exo">
-            PROGRAMMING LANGUAGES:
-          </h1>
-          <div class="text-gray-400 mb-8 font-play l:text-2xl">
-            <p>Cascading Style Sheets</p>
-            <p>C#</p>
-            <p>HyperText Markup Language</p>
-            <p>Java</p>
-            <p>Javascript</p>
-            <p>Python</p>
-            <p>SQL and NoSQL</p>
-            <p>Visual Basic</p>
-          </div>
-
-          <h1 class="text-white l:text-3xl mb-4 font-exo">
-            FRAMEWORKS AND RUNTIME ENVIRONMENTS:
-          </h1>
-          <div class="text-gray-400 mb-8 font-play l:text-2xl">
-            <p>Node.js</p>
-            <p>Nuxt.js</p>
-            <p>React</p>
-          </div>
-
-          <h1 class="text-white l:text-3xl mb-4 font-exo">IDE PREFERENCE:</h1>
-          <div class="text-gray-400 mb-8 font-play l:text-2xl">
-            <p>Visual Studio Code</p>
-          </div>
-
-          <h1 class="text-white l:text-3xl mb-4 font-exo">WORK EXPERIENCE:</h1>
-          <div class="text-gray-400 mb-8 font-play l:text-2xl">
-            <p>3 Years in Retail</p>
+            <a href="https://www.linkedin.com/in/jordan-l-42ba3815b/"
+              >https://www.linkedin.com/in/jordan-l-42ba3815b/</a
+            >
           </div>
 
           <div>
@@ -122,7 +85,7 @@ export default {
     const sphere = new Mesh(
       new SphereGeometry(5, 50, 50),
       new MeshBasicMaterial({
-        map: new TextureLoader().load(earthUV),
+        map: new TextureLoader().load(venusUV),
       })
     );
 
@@ -224,11 +187,12 @@ export default {
       );
       camera.position.z = 15;
     });
+
     // Transition back to Home Page
     document.querySelector("#homeButton").addEventListener("click", (e) => {
       e.preventDefault();
       scroll({
-        top: 1250,
+        top: 700,
         left: 100,
         behavior: "smooth",
       });
